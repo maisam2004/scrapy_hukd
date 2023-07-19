@@ -11,8 +11,11 @@ class HotukSpider(scrapy.Spider):
 
     def parse(self, response):
         yield{
-            'title':response.xpath('//*[@id="thread_4169668"]/div/div[3]/strong/a/text()').get(),
-            'title-2nd':response.xpath('//article//strong/a/text()').get()
+            
+            'title-2nd':response.xpath('//article//strong/a/text()').get(),
+            'price_tag':response.css('.thread-price::text').get()
         }
 #//*[@id="thread_4169668"]/div/div[3]/strong
 #//*[@id="thread_4169668"]/div/div[3]/strong/a
+#//*[@id="thread_4169674"]/div/div[3]/span/span[1]/span
+#[@id="thread_4169674"]/div//span
