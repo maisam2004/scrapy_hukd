@@ -8,5 +8,6 @@ import scrapy
 
 class HukdItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    price_tag = scrapy.Field()
+    seller = scrapy.Field()
