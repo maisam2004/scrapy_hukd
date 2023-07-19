@@ -1,0 +1,89 @@
+1.start jnew project
+    scrapy startproject article_scraper
+
+2.go to spider in project directory 
+   cd article_scraper/article_scraper/spiders
+
+3.generate spider for project
+    scrapy genspider wikiepedia wikipedia.com
+
+4.go to wikiepedia spider py file 
+
+5.import scrapy.spiders import CrawlSpider,Rule
+
+6.inside class inheritance write it > CrawlSpider
+
+7.import LinkExtractor from scrapy.linkextractors
+
+8.spesify start_urls in py file
+
+9.add return and dictionary you want to returned
+            'title':response.xpath('//h1/text()').get() or response.xpath('//h1/i/text()').get(),
+            'url':response.url,
+            'last_edited':response.xpath('//li[@id="footer-info-lastmod"]/text()').get(),
+
+10.change name of pars funciton to pars_info
+
+11.we want ot over liks and flow links inside the page so we need linkextractors inside Rule
+*write this rule outside the pars_info funciton
+        rules = [Rule(LinkExtractor(allow=r'wiki/((?!:).)*$'),callback='pars_info']
+
+
+12.terminal and enter this command
+    scrapy runspider wikipedia
+    scrapy crawl wikipedia
+
+
+&&>>>>  now we want to collect some of info of web likes we crawl .
+>>>>>>   so we need to use file called items.py 
+
+in items 
+
+13. change existed class name to Article 
+
+14. write all dictionary keys here but with field set 
+    title = scrapy.Field()
+    url   = scrapy.Field()
+    last_edited =scrapy.Field()
+    field_order = ['title', 'url', 'last_edited']
+
+15.and go to main spider file and import this class in items
+    from article_scraper.items import Article
+
+16.inside pars_info we change dictionary to set article scrapy fields 
+
+        article = Article()
+
+        article['title'] = response.xpath
+        article['url'] =
+        article['last_edited'] = response.xpath
+
+        yield article
+
+17.in terminal write this and it will create csv file of what is find at certain number of pages
+
+    scrapy crawl wikipedia -o data.csv -t csv -s CLOSESPIDER_PAGECOUTN=10
+    scrapy crawl wikipedia -o data.csv -t csv -s CLOSESPIDER_ITEMCOUNT=4
+    %%
+    **if you want create joson file in terminal 
+        scrapy crawl wikipedia -o data.json -t json -s CLOSESPIDER_ITEMCOUNT=4
+
+
+        In this command:
+
+            wikipedia is the name of your Spider class.
+            -o data.json specifies the output file name as "data.json".
+            -t json sets the output format as JSON.
+            -s CLOSESPIDER_ITEMCOUNT=4 limits the number of pages to be crawled to 4.
+
+
+
+18 *but if you want to do not type everytime in terminal close spider command instead automaticly do it 
+so go to setting and write it there.
+
+        CLOSESPIDER_ITEMCOUNT = 5
+19.in setting.py we can add this line to order the field the way we want
+    FEED_EXPORT_FIELDS = ['title', 'url', 'last_edited']
+
+
+20.do data base staffs if you want.

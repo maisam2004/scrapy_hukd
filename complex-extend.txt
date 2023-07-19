@@ -1,0 +1,24 @@
+complex file step 17..terminal 
+..create new file with easier options
+--------------------------------------
+first_option>>changing this >> scrapy crwal wikiepedia -o filex.csv -t csv
+
+second_option>>
+if we want to specify the file format and file name in setting 
+without need to be written in terminal 
+
+go to seetting in scrapy project add this:
+
+FEED_FORMAT = 'json'
+FEED_URL = 'article.json'
+
+**if you want to read file in terminal >> cat filename.ext
+
+third option>>
+if you want to set file output in actual main file spider
+
+wrtie this in  class outside function ::
+custom_settings={
+    'FEED_URI':'article.xml',
+    'FEED_FORMAT':'xml'
+}
