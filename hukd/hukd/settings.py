@@ -62,9 +62,11 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "hukd.pipelines.HukdPipeline": 300,
-#}
+ITEM_PIPELINES = {
+    "hukd.pipelines.HukdPipeline": 100,
+    "hukd.pipelines.Cleaning_data": 200,
+    "hukd.pipelines.Create_csv": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

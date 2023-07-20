@@ -18,9 +18,9 @@ class HotukSpider(scrapy.Spider):
         deal['seller']=response.css('.cept-merchant-name::text').getall()
         
         
-        yield self.process_deal(deal)
+        yield deal
     
-    def process_deal(self,deal):
+"""   def process_deal(self,deal):
         rows = zip(deal['title'],deal['price_tag'],deal['seller'])
         with open('deals.csv','a',newline='',encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
@@ -30,5 +30,5 @@ class HotukSpider(scrapy.Spider):
                 writer.writerow(row)
 
         return deal
-        
+         """
       
