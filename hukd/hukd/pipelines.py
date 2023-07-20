@@ -25,8 +25,8 @@ class Cleaning_data:
     
     
     
-class Create_csv:    
-    def process_deal(self,deal):
+class CreateCsvPipeline:    
+    def process_deal(self,deal,spider):
         rows = zip(deal['title'],deal['price_tag'],deal['seller'])
         with open('deals.csv','a',newline='',encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
@@ -36,3 +36,22 @@ class Create_csv:
                 writer.writerow(row)
 
         return deal
+    
+
+
+    '''
+    just class of create class practice :
+    class CreateCsvPipeline:
+    def __init__(self):
+        self.file = open('output.csv', 'w', newline='', encoding='utf-8')
+        self.writer = csv.writer(self.file)
+        self.writer.writerow(['Title', 'Price', 'Seller'])
+
+    def process_item(self, deal, spider):
+        row = (deal['title'], deal['price_tag'], deal['seller'])
+        self.writer.writerow(row)
+        return deal
+
+    def close_spider(self, spider):
+        self.file.close()
+    '''

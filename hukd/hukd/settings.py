@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
     "hukd.pipelines.HukdPipeline": 100,
     "hukd.pipelines.Cleaning_data": 200,
-    "hukd.pipelines.Create_csv": 300,
+    "hukd.pipelines.CreateCsvPipeline": 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
