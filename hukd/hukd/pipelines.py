@@ -26,7 +26,7 @@ class Cleaning_data:
     
     
 class CreateCsvPipeline:    
-    def process_deal(self,deal,spider):
+    def process_item(self,deal,spider):
         rows = zip(deal['title'],deal['price_tag'],deal['seller'])
         with open('deals.csv','a',newline='',encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
