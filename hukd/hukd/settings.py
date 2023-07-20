@@ -13,6 +13,9 @@ SPIDER_MODULES = ["hukd.spiders"]
 NEWSPIDER_MODULE = "hukd.spiders"
 
 
+
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "hukd (+http://www.yourdomain.com)"
 

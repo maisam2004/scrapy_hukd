@@ -16,7 +16,7 @@ class HukdPipeline:
 
         return deal
 
-class CleaningDataPipeline:
+class Cleaning_data:
     def process_item(self,deal,spider):
 
         deal['title'] = [title.strip() for title in  deal['title']]

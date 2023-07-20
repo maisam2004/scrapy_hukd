@@ -7,7 +7,7 @@ from hukd.items import HukdItem
 class HotukSpider(scrapy.Spider):
     name = "hotuk"
     allowed_domains = ["hotukdeals.com"]
-    start_urls = ["https://hotukdeals.com/new"]
+    start_urls = ["https://hotukdeals.com/new","https://www.hotukdeals.com/deals-new?page=2"]
     
     #rules = [Rule(LinkExtractor(allow=))]
 
