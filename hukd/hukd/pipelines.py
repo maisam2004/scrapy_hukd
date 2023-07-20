@@ -5,6 +5,7 @@
 
 
 # useful for handling different item types with a single interface
+import os.path as op
 import csv
 from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
@@ -25,12 +26,19 @@ class Cleaning_data:
         return deal
        
     
-class CreateCsvPipeline:    
+class CreateCsvPipeline:
+    
     def process_item(self,deal,spider):
+        if op.exists('deals.csv'):
+            header_row=['new_page','new_page','new_page']
+        else:
+            header_row=['Title','Price','Seller'] 
+
+
         rows = zip(deal['title'],deal['price_tag'],deal['seller'])
         with open('deals.csv','a',newline='',encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(['Title','Price','Seller'])
+            writer.writerow(header_row)
 
             for row in rows:
                 writer.writerow(row)
