@@ -16,14 +16,14 @@ class HukdPipeline:
 
         return deal
 
-class Cleaning_data:
+class CleaningDataPipeline:
     def process_item(self,deal,spider):
-        deal['title'] = deal['title'].strip()
-        deal['price_tag'] = deal['price_tag'].strip()
-        deal['seller'] = deal['seller'].strip()
+
+        deal['title'] = [title.strip() for title in  deal['title']]
+        deal['price_tag'] = [price_tag.strip() for price_tag in  deal['price_tag']]
+        deal['seller'] = [seller.strip() for seller in  deal['seller']]
         return deal
-    
-    
+       
     
 class CreateCsvPipeline:    
     def process_item(self,deal,spider):
