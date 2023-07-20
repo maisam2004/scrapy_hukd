@@ -6,8 +6,10 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-
+from scrapy.exceptions import DropItem
 
 class HukdPipeline:
-    def process_item(self, item, spider):
-        return item
+    def process_item(self, deal, spider):
+
+
+        return deal
