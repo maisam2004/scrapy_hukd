@@ -5,7 +5,7 @@
 
 
 # useful for handling different item types with a single interface
-import os.path as op
+import os
 import csv
 from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
@@ -24,12 +24,14 @@ class Cleaning_data:
         deal['price_tag'] = [price_tag.strip() for price_tag in  deal['price_tag']]
         deal['seller'] = [seller.strip() for seller in  deal['seller']]
         return deal
-       
+
+
+
     
 class CreateCsvPipeline:
     
     def process_item(self,deal,spider):
-        if op.exists('deals.csv'):
+        if os.path.exists('deals.csv'):
             header_row=['new_page','new_page','new_page']
         else:
             header_row=['Title','Price','Seller'] 
@@ -47,7 +49,7 @@ class CreateCsvPipeline:
     
 
 
-    '''
+'''
     just class of create class practice :
     class CreateCsvPipeline:
     def __init__(self):

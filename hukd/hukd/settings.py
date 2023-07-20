@@ -12,8 +12,9 @@ BOT_NAME = "hukd"
 SPIDER_MODULES = ["hukd.spiders"]
 NEWSPIDER_MODULE = "hukd.spiders"
 
-
-
+#for create json file
+#FEED_FORMAT = 'json'
+#FEED_URI = 'article.json'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

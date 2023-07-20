@@ -10,6 +10,7 @@ class HotukSpider(scrapy.Spider):
     start_urls = ["https://hotukdeals.com/new","https://www.hotukdeals.com/deals-new?page=2"]
     
     #rules = [Rule(LinkExtractor(allow=))]
+ 
 
     def parse(self, response):
         deal = HukdItem()
